@@ -1,3 +1,4 @@
-import { Popover } from './componenst/Popover'
+import { AddItem } from "./componenst/AddItem";
 
-const tooltips = new Popover() //eslint-disable-line
+const form = new AddItem
+// form.showForm()

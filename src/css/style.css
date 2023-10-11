@@ -33,3 +33,33 @@ td {
   text-align: center;
   padding: 10px;
 }
+
+tr:nth-child(1){
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.crm__add-form{
+  position: absolute;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 500px;
+  border: 2px solid darkgray;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.add-form__btn-container{
+  display: flex;
+  margin: auto;
+  gap: 20px;
+
+}
+
+.add-form__btn-container > button {
+  height: 40px;
+  width: 130px;
+  border-radius: 10px;
+}
