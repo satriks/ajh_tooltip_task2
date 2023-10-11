@@ -1,0 +1,35 @@
+
+body {
+  color: #520909d1;
+}
+.crm{
+  margin: auto;
+  text-align: start;
+  margin-top: 200px;
+  width: 600px;
+}
+
+.crm__head {
+  display: flex;
+  justify-content: space-between;
+}
+.crm__head > button {
+  color: #520909d1 ;
+  align-self: center;
+  font-size: 30px;
+  margin-right: 15px;
+  border: 0;
+  outline: 0;
+  background-color: #fff;
+  padding-top: 15px;
+}
+
+.crm > table {
+  border: 2px double darkorange;
+  width: 100%;
+}
+
+td {
+  text-align: center;
+  padding: 10px;
+}
