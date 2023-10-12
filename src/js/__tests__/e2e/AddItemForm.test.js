@@ -9,7 +9,7 @@ describe('Page start', () => {
 
   beforeAll(async () => {
     browser = await puppeteer.launch({
-      headless: 'new',
+      headless: process.env.CI,
       slowMo: 300
     })
     page = await browser.newPage()
@@ -33,11 +33,11 @@ describe('Page start', () => {
     await page.waitForSelector('body')
 
     const btn = await page.$('.crm__add-btn')
-    
+
     await btn.click()
-    
+
     const unconfirmedBtn = await page.$('.cancelButton')
-  
+
     await unconfirmedBtn.click()
 
     expect(await page.$('.crm__add-form')).toBe(null)
@@ -49,7 +49,7 @@ describe('Page start', () => {
     await page.waitForSelector('body')
 
     const btn = await page.$('.crm__add-btn')
-    
+
     await btn.click()
 
     const tittle = await page.$('.input-title')
@@ -59,19 +59,19 @@ describe('Page start', () => {
     const price = await page.$('.input-price')
     await price.click()
     await price.type('50000')
-    
-    const confirmBtn = await page.$('.saveButton')
-  
-    await confirmBtn.click()
-    
-    const result = await page.evaluate(() => {
-      let length = document.querySelectorAll('.item').length
-    return {
-      length
-    }
-    });
 
-    expect(result).toEqual({length: 4})
+    const confirmBtn = await page.$('.saveButton')
+
+    await confirmBtn.click()
+
+    const result = await page.evaluate(() => {
+      const length = document.querySelectorAll('.item').length
+      return {
+        length
+      }
+    })
+
+    expect(result).toEqual({ length: 4 })
   })
 
   test('check add form change ', async () => {
@@ -80,7 +80,7 @@ describe('Page start', () => {
     await page.waitForSelector('body')
 
     const btn = await page.$('.redact')
-    
+
     await btn.click()
 
     const tittle = await page.$('.input-title')
@@ -90,21 +90,21 @@ describe('Page start', () => {
     const price = await page.$('.input-price')
     await price.click()
     await price.type('50000')
-    
-    const confirmBtn = await page.$('.saveButton')
-  
-    await confirmBtn.click()
-    
-    const result = await page.evaluate(() => {
-      let title = document.querySelector('.item').children[0].innerText
-      let price = document.querySelector('.item').children[1].innerText
-    return {
-      title,
-      price
-    }
-    });
 
-    expect(result).toEqual({title: 'ТестНовое', price : '500050000'})
+    const confirmBtn = await page.$('.saveButton')
+
+    await confirmBtn.click()
+
+    const result = await page.evaluate(() => {
+      const title = document.querySelector('.item').children[0].innerText
+      const price = document.querySelector('.item').children[1].innerText
+      return {
+        title,
+        price
+      }
+    })
+
+    expect(result).toEqual({ title: 'ТестНовое', price: '500050000' })
   })
 
   afterAll(async () => {

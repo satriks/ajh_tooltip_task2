@@ -9,7 +9,7 @@ describe('Page start', () => {
 
   beforeAll(async () => {
     browser = await puppeteer.launch({
-      headless: 'new',
+      headless: process.env.CI,
       slowMo: 300
     })
     page = await browser.newPage()
@@ -33,11 +33,11 @@ describe('Page start', () => {
     await page.waitForSelector('body')
 
     const btn = await page.$('.del')
-    
+
     await btn.click()
-    
+
     const unconfirmedBtn = await page.$('.unconfirmedBtn')
-  
+
     await unconfirmedBtn.click()
 
     expect(await page.$('.conform-form')).toBe(null)
@@ -49,25 +49,22 @@ describe('Page start', () => {
     await page.waitForSelector('body')
     await page.waitForSelector('.item')
 
-
-
-
     const btn = await page.$('.del')
-    
-    await btn.click()
-    
-    const confirmBtn = await page.$('.confirmBtn')
-  
-    await confirmBtn.click()
-    
-    const result = await page.evaluate(() => {
-      let length = document.querySelectorAll('.item').length
-    return {
-      length
-    }
-    });
 
-    expect(result).toEqual({length: 2})
+    await btn.click()
+
+    const confirmBtn = await page.$('.confirmBtn')
+
+    await confirmBtn.click()
+
+    const result = await page.evaluate(() => {
+      const length = document.querySelectorAll('.item').length
+      return {
+        length
+      }
+    })
+
+    expect(result).toEqual({ length: 2 })
   })
 
   afterAll(async () => {
