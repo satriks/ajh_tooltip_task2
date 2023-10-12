@@ -1,4 +1,5 @@
-import { AddItem } from "./componenst/AddItem";
+import { DomControl } from "./componenst/DomControl";
 
-const form = new AddItem
-// form.showForm()
+
+const control = new DomControl()
+control.init()
