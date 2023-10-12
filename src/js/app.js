@@ -1,5 +1,4 @@
-import { DomControl } from "./componenst/DomControl";
-
+import { DomControl } from './components/DomControl'
 
 const control = new DomControl()
-control.init()
+control.init() //тестовое заполнение

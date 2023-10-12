@@ -12,6 +12,7 @@
       "WithStatement"
     ],
     "no-use-before-define": "off",
-    "no-fallthrough": "off"
+    "no-fallthrough": "off",
+    "array-callback-return": "off"
   }
 }
